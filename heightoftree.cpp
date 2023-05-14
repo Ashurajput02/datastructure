@@ -30,35 +30,15 @@ node *  insert(node *root,int data)
     return root;
 
 }
-bool search(node * temp2,int x)
+
+int height(struct node*ptr)
 {
-if(temp2==NULL) 
-return false;
-else if(x==temp2->data)
-return true;
+    if(ptr==NULL)
+    return -1;
 
-else if(x<=temp2->data)
-return search(temp2->left,x);
-else if(x>=temp2->data)
-return search(temp2->right,x);
-}
-
-int maxima(node *root)
-{
-    static int max=0;
-    if(max<=root->data)
-    {
-        max=root->data;
-        maxima(root->right);
-
-    }
-
-    return max;
-
+    return max((height(ptr->left),height(ptr->right)))+1;
 
 }
-
-
 int main()
 {
     node *rootptr=NULL;
@@ -74,15 +54,8 @@ int main()
     rootptr=insert(rootptr,25);
     
     printf("the valu4 of root ptr=%d\n",rootptr);
-    /*
-    printf("enter number to be searched:\n");
-   int x;
-    scanf("%d",&x);
-    int result=search(rootptr,x);
- 
-printf("%d\n",result);*/
-int max=maxima(rootptr);
-printf("the maximum element is=%d\n",max);
+
+int heighter=height(rootptr);
+printf("height of the tree is=%d\n",heighter);
+
 }
-
-
